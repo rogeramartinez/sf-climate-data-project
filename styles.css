@@ -1,0 +1,106 @@
+body{
+
+  width: 100%;
+
+  background-color: black;
+}
+
+
+div#main-container {
+
+  height: 100%;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  background-image: url("img/Russian-Hill.jpg");
+
+}
+
+select.custom-select {
+    width: fit-content;
+}
+
+.year-range {
+    display: inline-flex;
+}
+
+#to-date {
+    margin-left: 10%
+}
+
+#min-year {
+    padding-right: 5%;
+}
+
+.slider.slider-horizontal {
+    width: 40em !important;
+    height: 20px;
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+}
+
+#data-header {
+  font-weight: bold;
+}
+
+#title-text {
+    font-size: 1.5em;
+    margin-left: 25%;
+    margin-right: 25%;
+    color: yellow;
+    text-align:center;
+}
+
+#image-attr{
+    text-align: center;
+    color: yellow;
+}
+
+#selection {
+
+  text-align:center;
+  margin-top: 10px;
+  color: yellow;
+
+}
+
+#project-name {
+    text-align: center;
+}
+
+#play-controls {
+    background-color: #6585b4;
+    color: yellow;
+}
+
+#data-display {
+    width: fit-content;
+    background-color: #6585b4;
+    color: yellow;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 5%;
+    opacity: 75%;
+}
+
+
+@media screen and (max-width: 768px) {
+    #start-month, #start-year, #end-month, #end-year {
+        font-size: 1em;
+    }
+
+    #play-controls {
+        display: block;
+    }
+
+    #to-date { display: inline-block;}
+
+    #data-display {
+
+        font-size: 2em;
+        color: yellow;
+        text-align: center;
+    }
+}
