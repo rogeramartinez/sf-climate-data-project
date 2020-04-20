@@ -18,6 +18,65 @@
 	month[10] = "November";
 	month[11] = "December";
 
+	var increment = 10;
+
+	var date;
+
+	$(".increment").click(function () {
+		var id = $(this).attr("id");
+
+		$(this).addClass("active");
+		$(this).removeClass("disabled");
+
+		if (id == "by-year") {
+			$("#by-decade").removeClass("active");
+			$("#by-decade").addClass("disabled");
+
+			$("#one-month").removeClass("active");
+			$("#one-month").addClass("disabled");
+
+			$("#end-month").show();
+			$("#end-year").show();
+
+			increment = 1;
+		}
+
+		if (id == "by-decade") {
+			$("#by-year").removeClass("active");
+			$("#by-year").addClass("disabled");
+
+			$("#one-month").removeClass("active");
+			$("#one-month").addClass("disabled");
+
+			$("#end-month").show();
+			$("#end-year").show();
+
+			increment = 10;
+		}
+
+		if (id == "one-month") {
+			$("#by-year").removeClass("active");
+			$("#by-year").addClass("disabled");
+
+			$("#by-decade").removeClass("active");
+			$("#by-decade").addClass("disabled");
+
+			$("#end-month").hide();
+			$("#end-year").hide();
+
+			$("#end-month").val(12);
+			$("#end-year").val(2018);
+
+			increment = 0;
+		}
+
+		if ($("#play-controls").html() == "■") {
+
+			sendToAudio();
+		}
+
+    })
+
 	$("#slider").slider({ id: "slider12b", min: 1975, max: 2018, range: true, value: [1975, 2018] });
 
 	function get_min_year(){
@@ -27,20 +86,63 @@
 		return $("#start-year").val();
 	}
 
-        function get_max_year(){
+     function get_max_year(){
 
         //var max_year = $("#slider12b > div.tooltip.tooltip-max.top > div.tooltip-inner").html();
 
 		return $("#end-year").val();
-		}
+	}
 
 
 	var min_year = get_min_year();
 
 	var max_year = get_max_year();
 
+	function compare_dates() {
+		var start_val = $("#start-year").val();
+
+		var end_val = $("#end-year").val();
+
+		var start_month = $("#start-month").val();
+
+		var end_month = $("#end-month").val();
+
+		if (start_val < 1975) {
+			$("#start-year").val(1975);
+		}
+		else if (start_val > 2018) {
+			$("#start-year").val(2018);
+		}
+		else if (start_val > end_val) {
+			$("#end-year").val(start_val);
+		}
+		else if (end_val == start_val && start_month > end_month) {
+			$("#end-month").val(start_month);
+		}
+
+		/*var start_val = $("#start-year").val();
+
+		var end_val = $("#end-year").val();
+
+		var start_month = $("#start-month").val();
+
+		var end_month = $("#end-month").val();
+        */
+
+		if (end_val < start_val) {
+			$("#end-year").val(start_val);
+		}
+		else if (end_val > 2018) {
+			$("#end-year").val(2018);
+		}
+		else if (end_val == start_val && start_month > end_month) {
+			$("#end-month").val(start_month);
+		}
+    }
 
 	$("#start-month, #start-year").change(function () {
+
+		compare_dates();
 
 		if ($("#play-controls").html() == "■") {
 
@@ -48,7 +150,15 @@
 		}
 	});
 
+	$("#end-month, #end-year").change(function () {
+		compare_dates();
+	});
+		
+
+
 	$("#play-controls").click(function () {
+
+		compare_dates();
 
 		play_controls();
 		
@@ -63,6 +173,7 @@
 			$("#end-year").css("color", "#black");
 
 			$("#end-year").css("border-color", "initial");
+            
 
 			stop();
 
@@ -85,7 +196,7 @@
 			$("#end-year").css("color", "#6c757d");
 
 			$("#end-year").css("border-color", "#ced4da");
-
+            
 			$("#play-controls").html('&#9632;');
 		}
 	}
@@ -114,7 +225,6 @@
     }
 
 	function sendToAudio() {
-		//var date = $("#datepicker").val();
 
 		var start_month = $("#start-month").val();
 
@@ -123,7 +233,7 @@
 		console.log("Month: " + start_month);
 		console.log("Year: " + start_year);
 
-		var date = start_year + start_month;
+		date = start_year + start_month;
 
 		console.log("Date: " + date);
 
@@ -136,17 +246,13 @@
 
 		request.done(function (data) {
 
-			console.log(data);
-
 			climate_data = JSON.parse(data);
 
-			var dateString = new Date(date);
-
-			console.log(dateString);
+			//var dateString = new Date(date);
 
 			var start_month_string = "";
 
-			if (start_month < 10) {
+			if (parseInt(start_month) < 10) {
 				start_month_string = start_month.substr(1);
 			}
 			else {
@@ -165,16 +271,16 @@
 
 			climate_data.co2_ppm = Math.floor(climate_data.co2_ppm * 10) / 10;
 
-			$("#data-display").empty();
+			$("#data-display-inner").empty();
 
-			$("#data-display").append("<div id='data-header'><p>" + plainDate + "</p></div>");
+			$("#data-display-inner").append("<div id='data-header'><h4>" + plainDate + "</h4></div>");
 
-			$("#data-display").append("<div id='data'><p>Min Temp: " + climate_data.min_temp + " &#8457;</p>");
-			$("#data-display").append("<p>Max Temp: " + climate_data.max_temp + " &#8457;</p>");
+			$("#data-display-inner").append("<div id='data'><p>Min Temp: " + climate_data.min_temp + " &#8457;</p>");
+			$("#data-display-inner").append("<p>Max Temp: " + climate_data.max_temp + " &#8457;</p>");
 
-			$("#data-display").append("<p>Total Preciptation: " + climate_data.precip_mm + " mm</p>");
+			$("#data-display-inner").append("<p>Total Preciptation: " + climate_data.precip_mm + " mm</p>");
 
-			$("#data-display").append("<p>Average CO<sup>2</sup> level: " + climate_data.co2_ppm + " ppm</p></div>");
+			$("#data-display-inner").append("<p>Average CO<sup>2</sup> level: " + climate_data.co2_ppm + " ppm</p></div>");
 
 			audiate(climate_data);
 
@@ -230,15 +336,21 @@
 
 		var random_hash = populate_hash();
 
-	    var start_month = document.getElementById("start-month").selectedIndex;
+	    var start_month_increment = document.getElementById("start-month").selectedIndex;
 
-		var end_month = document.getElementById("end-month").selectedIndex
+		var start_month = $("#start-month").val();
+
+		var end_month = $("#end-month").val();
+
+		//var end_month_increment = document.getElementById("end-month").selectedIndex;
 
 		var start_year = document.getElementById("start-year").value;
 
 		var end_year = document.getElementById("end-year").value;
 
-		var start_date = start_year + start_month;
+		var start_date = date;
+
+		//var start_date = start_year + start_month;
 
 		var end_date = end_year + end_month;
 
@@ -260,9 +372,9 @@
 
 		var max = parseFloat(climate_data.max_temp);
 
-		var min = parseFloat(climate_data.min_temp);
+		//var min = parseFloat(climate_data.min_temp);
 
-		console.log(max_percent);
+		//console.log(max_percent);
 
 		//var frequency = max / min;
 
@@ -348,42 +460,45 @@
 
 			num++;
 
-			console.log(start_date);
+			console.log("Start Date: " + start_date);
 
-			console.log(end_date);
-
+			console.log("End Date: " + end_date);
 
 			if (num == 24) {
 
-				if (start_date < end_date) {
-
-					if (start_month < 11) {
-						var new_month = start_month + 1;
-						document.getElementById("start-month").selectedIndex = new_month;
-
-						//$.getScript("client-side.js", function () { sendToAudio(); });
-
+				    if (increment == 0) {
 						sendToAudio();
+                    }
+					else if (start_date < end_date) {
+
+						if (start_month < 12) {
+							var new_month = start_month_increment + 1;
+							document.getElementById("start-month").selectedIndex = new_month;
+
+							//$.getScript("client-side.js", function () { sendToAudio(); });
+
+							sendToAudio();
+					    }
+					    else {
+
+							next_year = parseInt(start_year) + parseInt(increment);
+
+							if (next_year > 2018) {
+								next_year = 2018;
+                            }
+
+							//next_year = 2018;
+
+							document.getElementById("start-year").value = next_year;
+
+							document.getElementById("start-month").selectedIndex = 0;
+
+							sendToAudio();
+
+						}
 
 					}
-					else {
-
-						next_year = parseInt(start_year) + 10;
-
-						//next_year = 2018;
-
-						document.getElementById("start-year").value = next_year;
-
-						document.getElementById("start-month").selectedIndex = 0;
-
-						sendToAudio();
-
-					}
-
-				}
-
-
-			}
+			}	
 
 		}, random_hash, "upDown");
 
@@ -440,6 +555,7 @@
         }
 
 		pattern.iterations = 25;
+		
 
 		document.querySelector('#play-controls').addEventListener('click', e => Tone.Transport.toggle());
 
