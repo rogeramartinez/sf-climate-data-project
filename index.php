@@ -2,6 +2,8 @@
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="styles.css">
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ycodetech/horizontal-timeline-2.0@2/css/horizontal_timeline.2.0.min.css">
@@ -22,60 +24,9 @@
 </head>
 <body class="container-lg">
 <div id ="main-container">
-
-<div id= "title-text"><br>San Francisco <span>Daily Climate Data</span><br>1975-2018</div>
+<div id= "title-text"><p>San Francisco <span id ="daily-climate-data">Monthly Climate Data</span></p><p>1975-2018</p></div>
 
 <div id="project-name">SFCM Climate Music Project</div>
-
-<div id = "selection">
-<span>FROM: </span>
-<span class ="year-range">
-<select class="date-range custom-select" id="start-month">
-  <option selected value="01" size="2">January</option>
-  <option value="02">February</option>
-  <option value="03">March</option>
-  <option value="04">April</option>
-  <option value="05">May</option>
-  <option value="06">June</option>
-  <option value="07">July</option>
-  <option value="08">August</option>
-  <option value="09">September</option>
-  <option value="10">October</option>
-  <option value="11">November</option>
-  <option value="12">December</option>
-</select>
-<input type ="number" min="1975" max ="2018" value="1975" id="start-year"></input>
-
-<!--<div id ="min-year"></div>-->
-
-</span>
-<!-- Range slider, low track: -->
-
-<!--<input id="slider" type="text"/><br/>-->
-<label for="end-month" id="to-date">TO: </label>
-<span class="year-range">
-
-<select class="date-range custom-select" id="end-month">
-  <option value="01" size="2">January</option>
-  <option value="02">February</option>
-  <option value="03">March</option>
-  <option value="04">April</option>
-  <option value="05">May</option>
-  <option value="06">June</option>
-  <option value="07">July</option>
-  <option value="08">August</option>
-  <option value="09">September</option>
-  <option value="10">October</option>
-  <option value="11">November</option>
-  <option selected value="12">December</option>
-</select>
-
-<input type ="number" min="1975" max ="2018" value="2018" id="end-year"></input>
-
-<button id ="play-controls">&#9658;</button>
-
-<!--<div id = "max-year"></div>-->
-</span>
 
 <!--
 <div class="horizontal-timeline" id="myTimeline">
@@ -99,15 +50,92 @@
 </p>-->
 
 
+<div id ="data-display" class="container-md">
+
+<h6> Play Data By: </h6>
+
+
+<div id="play-option">
+
+
+<div id="play-by"><button id ="play-controls">&#9658;</button>
+
+
+<button type="button" class="btn btn-primary btn-md increment active" id="by-decade">Decade</button>
+
+<button type="button" class="btn btn-primary btn-md increment disabled" id="by-year">Year</button>
+
+<button type="button" class="btn btn-primary btn-md increment disabled" id="one-month">Selected Month</button>
+</div>
+
+<div id="date-range-label"><h6> Date Range </h6></div>
+
+
+
+<div id = "selection">
+<div id="date-range-form">
+
+<span class ="year-range">
+
+<select class="date-range custom-select" id="start-month">
+  <option selected value="01" size="2">January</option>
+  <option value="02">February</option>
+  <option value="03">March</option>
+  <option value="04">April</option>
+  <option value="05">May</option>
+  <option value="06">June</option>
+  <option value="07">July</option>
+  <option value="08">August</option>
+  <option value="09">September</option>
+  <option value="10">October</option>
+  <option value="11">November</option>
+  <option value="12">December</option>
+</select>
+<input type ="number" min="1975" max ="2018" value="1975" id="start-year" class="input-lg"></input>
+
+</span>
+<!-- Range slider, low track: -->
+
+<!--<input id="slider" type="text"/><br/>-->
+
+<span class="year-range">
+<!--<span class ="range-label" id="to-date">To: </span>-->
+
+<select class="date-range custom-select" id="end-month">
+  <option value="01" size="2">January</option>
+  <option value="02">February</option>
+  <option value="03">March</option>
+  <option value="04">April</option>
+  <option value="05">May</option>
+  <option value="06">June</option>
+  <option value="07">July</option>
+  <option value="08">August</option>
+  <option value="09">September</option>
+  <option value="10">October</option>
+  <option value="11">November</option>
+  <option selected value="12">December</option>
+</select>
+
+<input type ="number" min="1975" max ="2018" value="2018" id="end-year"></input>
+
+<!--<div id = "max-year"></div>-->
+</span>
+
 
 </div>
 
-<div id ="data-display" class="container-md"></div>
-
+<div id ="data-display-inner" class="container-md lead"></div>
 
 </div>
 
-<div id="image-attr">Image by Eduardo Manchon, licensed under the <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Creative Commons Attribution-Share Alike 3.0 Unported license.</a></div>
+
+
+<!--<div id="image-attr">Image by Eduardo Manchon<br>Licensed under the <br><a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Creative Commons Attribution-Share Alike 3.0 Unported license.</a></div>-->
+
+</div>
+
+</div>
+
 
 
 </body>
