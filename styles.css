@@ -1,8 +1,8 @@
 body{
 
-  width: 100%;
+ //width: fit-content;
 
-  background-color: black;
+ background-color: black;
 }
 
 
@@ -15,8 +15,10 @@ div#main-container {
   background-repeat: no-repeat;
 
   background-image: url("img/Russian-Hill.jpg");
+  background-size: cover;
 
 }
+
 
 select.custom-select {
     width: fit-content;
@@ -24,18 +26,17 @@ select.custom-select {
 
 .year-range {
     display: inline-flex;
+    padding-right: 5%;
+    margin-bottom: 2%;
 }
 
-#to-date {
-    margin-left: 10%
-}
 
 #min-year {
     padding-right: 5%;
 }
 
 .slider.slider-horizontal {
-    width: 40em !important;
+    width: 50em !important;
     height: 20px;
     margin-left: 5% !important;
     margin-right: 5% !important;
@@ -47,8 +48,9 @@ select.custom-select {
 
 #title-text {
     font-size: 1.5em;
-    margin-left: 25%;
-    margin-right: 25%;
+    padding-top: 10px;
+   // margin-left: 25%;
+   // margin-right: 25%;
     color: yellow;
     text-align:center;
 }
@@ -59,7 +61,6 @@ select.custom-select {
 }
 
 #selection {
-
   text-align:center;
   margin-top: 10px;
   color: yellow;
@@ -70,37 +71,65 @@ select.custom-select {
     text-align: center;
 }
 
+#play-option {
+    padding-top: 10px;
+    display: inline;
+    border-bottom: 5px solid yellow;
+}
+
+#monthly, #daily {
+    display: inline-block;
+    text-align: center;
+    border: 3px black solid;
+}
+
+
 #play-controls {
-    background-color: #6585b4;
+    background-color: #0062cc;
     color: yellow;
+    opacity: 100%;
 }
 
 #data-display {
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: fit-content;
-    background-color: #6585b4;
+    background-color: slategrey;
     color: yellow;
-    text-align: center;
-    font-size: 2em;
-    margin-top: 5%;
-    opacity: 75%;
+    //text-align: center;
+    font-size: large;
+    margin-bottom: 5%;
+
 }
 
-
-@media screen and (max-width: 768px) {
-    #start-month, #start-year, #end-month, #end-year {
-        font-size: 1em;
-    }
-
-    #play-controls {
-        display: block;
-    }
-
-    #to-date { display: inline-block;}
-
-    #data-display {
-
-        font-size: 2em;
-        color: yellow;
-        text-align: center;
-    }
+#date-range-label {
+    margin-top: 20px;
+    padding-top: 5px;
+    border-top: 2px yellow solid;
 }
+
+#data-header {
+    padding-bottom: 10px;
+}
+
+#data-display-inner {
+    padding-top: 20px;
+    //font-weight: bold;
+}
+
+.range-label {
+    padding-right: 11px;
+    font-weight: bold;
+}
+
+    @media screen and (max-width: 768px) {
+        #data-display {
+            width: 100% !important;
+        }
+
+        #daily-climate-data {
+            display: block;
+        }
+    }
+
+
