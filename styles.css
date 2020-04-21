@@ -55,8 +55,16 @@ select.custom-select {
     text-align:center;
 }
 
+#project-name {
+    font-weight: bold;
+    font-size: 20px;
+}
+
 #image-attr{
-    text-align: center;
+    color: white;
+}
+
+#image-attr a {
     color: yellow;
 }
 
@@ -86,6 +94,45 @@ select.custom-select {
 .increment {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+#about {
+    padding-top: 5px;
+    text-align: center;
+    color: yellow;
+    border-top: 2px yellow solid;
+}
+
+#audio-header {
+    color: yellow;
+}
+
+#audio-settings {
+    padding-top: 5px;
+    border-top: 2px yellow solid;
+}
+
+#audio-details {
+    color: white;
+    text-align: left;
+}
+
+#about a {
+    color: yellow;
+}
+
+#info {
+    color: white;
+}
+
+#back {
+    text-align: center;
+    color: white;
+    border-top: 2px yellow solid;
+}
+
+#back a {
+    color: yellow;
 }
 
 #play-controls {
