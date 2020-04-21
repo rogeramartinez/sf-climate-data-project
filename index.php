@@ -65,7 +65,10 @@
 
 <button type="button" class="btn btn-primary btn-md increment disabled" id="by-year">Year</button>
 
-<button type="button" class="btn btn-primary btn-md increment disabled" id="one-month">Selected Month</button>
+<button type="button" class="btn btn-primary btn-md increment disabled" id="one-month">Selection</button>
+
+<button type="button" class="btn btn-primary btn-md increment disabled" id="random">Random</button>
+
 </div>
 
 <div id="date-range-label"><h6> Date Range </h6></div>

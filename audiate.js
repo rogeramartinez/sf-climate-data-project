@@ -35,6 +35,9 @@
 			$("#one-month").removeClass("active");
 			$("#one-month").addClass("disabled");
 
+			$("#random").removeClass("active");
+			$("#random").addClass("disabled");
+
 			$("#end-month").show();
 			$("#end-year").show();
 
@@ -47,6 +50,9 @@
 
 			$("#one-month").removeClass("active");
 			$("#one-month").addClass("disabled");
+
+			$("#random").removeClass("active");
+			$("#random").addClass("disabled");
 
 			$("#end-month").show();
 			$("#end-year").show();
@@ -61,6 +67,9 @@
 			$("#by-decade").removeClass("active");
 			$("#by-decade").addClass("disabled");
 
+			$("#random").removeClass("active");
+			$("#random").addClass("disabled");
+
 			$("#end-month").hide();
 			$("#end-year").hide();
 
@@ -68,6 +77,27 @@
 			$("#end-year").val(2018);
 
 			increment = 0;
+		}
+
+		if (id == "random") {
+			$("#by-year").removeClass("active");
+			$("#by-year").addClass("disabled");
+
+			$("#by-decade").removeClass("active");
+			$("#by-decade").addClass("disabled");
+
+			$("#one-month").removeClass("active");
+			$("#one-month").addClass("disabled");
+
+			$("#end-month").hide();
+			$("#end-year").hide();
+
+			$("#end-month").val(12);
+			$("#end-year").val(2018);
+
+			increment = "random";
+
+			get_random_date();
 		}
 
 		if ($("#play-controls").html() == "■") {
@@ -222,6 +252,17 @@
 
 			$("#start-month").val(new_month_val);
         }
+	}
+
+	function get_random_date() {
+
+		var random_year = getRandomInt(1975, 2018);
+
+		var random_month = getRandomInt(1, 12);
+
+		document.getElementById("start-year").value = random_year;
+
+		document.getElementById("start-month").selectedIndex = random_month;
     }
 
 	function sendToAudio() {
@@ -330,7 +371,13 @@
 		}
 
 		return hash;
-    }
+	}
+
+	function getRandomInt(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+	}
 
 	function audiate(climate_data) {
 
@@ -468,6 +515,13 @@
 
 				    if (increment == 0) {
 						sendToAudio();
+					}
+					else if (increment == "random") {
+
+						get_random_date();
+
+						sendToAudio();
+
                     }
 					else if (start_date < end_date) {
 

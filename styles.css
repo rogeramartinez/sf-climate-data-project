@@ -83,6 +83,10 @@ select.custom-select {
     border: 3px black solid;
 }
 
+.increment {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
 #play-controls {
     background-color: #0062cc;
