@@ -39,12 +39,12 @@ parts per million level rises, the music plays faster.
 
 The precipitation level is mapped to the envelope of the synthesizer, and the reverb settings. As precipitation rises, the notes play shorter and with more echo.
 
-Maximum monthly temperature is mapped to the distortion in the opening chord of each sequence.
+Maximum monthly temperature is mapped to the distortion levels in the opening chord of each sequence.
 
 <p></p>
 
 Users have the choice between hearing monthly climate data from a range of dates by decade or year.
-They may also listen the data from a selected month, or a random month.
+They may also listen to the data from a selected month, or a random month.
 
 <p></p>
 The goal of this project is to use music to depict the dangers of an unstable climate.
