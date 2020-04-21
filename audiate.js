@@ -473,11 +473,11 @@
 				attack: 1.55,
 				release: 10.5,
 			},
-			volume: -25,
+			volume: -30,
 
 		});
 
-		console.log("Wet: " + wet);
+		//console.log("Wet: " + wet);
 
         /*
 		var phaser = new Tone.Phaser({
@@ -572,17 +572,19 @@
 			type: "sine",
 			min: 0,
 			max: max,
-			phase: 1,
+			phase: 10,
 			frequency: climate_data.co2_ppm,
-			amplitude: 5,
+			amplitude: 1,
 		});
 
 		var distortion = new Tone.Distortion({
 			distortion: max_percent,
+            wet: max_percent,
 			oversample: "4x",
-		});
+		}).toMaster();
 
-		distortion.connect(poly);
+
+		poly.connect(distortion);
 
 		lfo.connect(fm2.detune);
 		lfo.connect(fmSynth.detune);
