@@ -26,8 +26,6 @@
 <div id ="main-container">
 <div id= "title-text"><p>San Francisco <span id ="daily-climate-data">Monthly Climate Data</span></p><p>1975-2018</p></div>
 
-<div id="project-name">SFCM Climate Music Project</div>
-
 <!--
 <div class="horizontal-timeline" id="myTimeline">
   <div class="events-content">
@@ -72,8 +70,6 @@
 </div>
 
 <div id="date-range-label"><h6> Date Range </h6></div>
-
-
 
 <div id = "selection">
 <div id="date-range-form">
@@ -128,6 +124,28 @@
 </div>
 
 <div id ="data-display-inner" class="container-md lead"></div>
+
+<div id = "audio-settings"><div id="audio header">Audio Settings</div>
+
+<div id ="audio-details">
+
+<div>CO<sup>2</sup> ppm = Tempo</div>
+
+<div>Precipitation = Note Length, Reverb</div>
+
+<div>Max Temperature = Distortion, Warble</div>
+
+</div>
+
+</div>
+
+
+
+<div></div>
+
+
+<div id = "about"><a href="about.php">About This Project</a></div>
+
 
 </div>
 
