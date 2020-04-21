@@ -39,7 +39,8 @@ parts per million level rises, the music plays faster.
 
 The precipitation level is mapped to the envelope of the synthesizer, and the reverb settings. As precipitation rises, the notes play shorter and with more echo.
 
-Maximum monthly temperature is mapped to the distortion levels in the opening chord of each sequence.
+Maximum monthly temperature is mapped to the distortion levels in the opening chord of each sequence. Each of these effects were chosen to depict a rising level
+of tension in correlation to the shifts in the climate data.
 
 <p></p>
 
