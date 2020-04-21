@@ -133,7 +133,7 @@
 
 <div>Precipitation = Note Length, Reverb</div>
 
-<div>Max Temperature = Distortion, Warble</div>
+<div>Max Temperature = Distortion</div>
 
 </div>
 
